@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface JQTrackViewController : UITableViewController {
-    AVPlayer *player;
     NSArray *trackList;
+    MPMoviePlayerViewController *movieController;
 }
 
 - (void)setArtist:(NSDictionary *)artistInfo;

@@ -19,7 +19,6 @@
 		E514FB1716AC81C5002F735D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1516AC81C5002F735D /* MainStoryboard_iPhone.storyboard */; };
 		E514FB1A16AC81C5002F735D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1816AC81C5002F735D /* MainStoryboard_iPad.storyboard */; };
 		E514FB1D16AC81C5002F735D /* JQArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB1C16AC81C5002F735D /* JQArtistViewController.m */; };
-		E514FB2416AC81C5002F735D /* JQSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB2316AC81C5002F735D /* JQSecondViewController.m */; };
 		E5FD5C8716B3051C00BCE7A9 /* JQProxyURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5C8616B3051C00BCE7A9 /* JQProxyURLProtocol.m */; };
 		E5FD5C8B16B30E4C00BCE7A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */; };
 		E5FD5C8E16B33E1100BCE7A9 /* JQTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5C8D16B33E1100BCE7A9 /* JQTrackViewController.m */; };
@@ -44,8 +43,6 @@
 		E514FB1916AC81C5002F735D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		E514FB1B16AC81C5002F735D /* JQArtistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQArtistViewController.h; sourceTree = "<group>"; };
 		E514FB1C16AC81C5002F735D /* JQArtistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQArtistViewController.m; sourceTree = "<group>"; };
-		E514FB2216AC81C5002F735D /* JQSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQSecondViewController.h; sourceTree = "<group>"; };
-		E514FB2316AC81C5002F735D /* JQSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQSecondViewController.m; sourceTree = "<group>"; };
 		E5FD5C8516B3051C00BCE7A9 /* JQProxyURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQProxyURLProtocol.h; sourceTree = "<group>"; };
 		E5FD5C8616B3051C00BCE7A9 /* JQProxyURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQProxyURLProtocol.m; sourceTree = "<group>"; };
 		E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -110,8 +107,6 @@
 				E514FB1C16AC81C5002F735D /* JQArtistViewController.m */,
 				E5FD5C8C16B33E1100BCE7A9 /* JQTrackViewController.h */,
 				E5FD5C8D16B33E1100BCE7A9 /* JQTrackViewController.m */,
-				E514FB2216AC81C5002F735D /* JQSecondViewController.h */,
-				E514FB2316AC81C5002F735D /* JQSecondViewController.m */,
 				E5FD5C8516B3051C00BCE7A9 /* JQProxyURLProtocol.h */,
 				E5FD5C8616B3051C00BCE7A9 /* JQProxyURLProtocol.m */,
 				E514FB0416AC81C5002F735D /* Supporting Files */,
@@ -204,7 +199,6 @@
 				E514FB0A16AC81C5002F735D /* main.m in Sources */,
 				E514FB0E16AC81C5002F735D /* JQAppDelegate.m in Sources */,
 				E514FB1D16AC81C5002F735D /* JQArtistViewController.m in Sources */,
-				E514FB2416AC81C5002F735D /* JQSecondViewController.m in Sources */,
 				E5FD5C8716B3051C00BCE7A9 /* JQProxyURLProtocol.m in Sources */,
 				E5FD5C8E16B33E1100BCE7A9 /* JQTrackViewController.m in Sources */,
 			);

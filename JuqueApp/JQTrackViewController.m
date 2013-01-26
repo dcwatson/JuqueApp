@@ -7,7 +7,6 @@
 //
 
 #import "JQTrackViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
 
 @interface JQTrackViewController ()
 
@@ -72,27 +71,29 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [player pause];
     NSDictionary *track = [trackList objectAtIndex:indexPath.row];
     NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.28:8000%@", [track objectForKey:@"url"]];
     
     NSLog(@"playing %@", urlString);
     
-    MPMoviePlayerViewController *controller = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:urlString]];
-    controller.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
-    [self.navigationController pushViewController:controller animated:YES];
+    movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:urlString]];
+    movieController.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
+    movieController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
     
-    /*
-    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:urlString]];
-    moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
-    moviePlayer.view.transform = CGAffineTransformConcat(moviePlayer.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-    UIWindow *backgroundWindow = [[UIApplication sharedApplication] keyWindow];
-    [moviePlayer.view setFrame:backgroundWindow.frame];
-    [backgroundWindow addSubview:moviePlayer.view];
-    [moviePlayer setFullscreen:YES animated:YES];
-    [moviePlayer prepareToPlay];
-    [moviePlayer play];
-     */
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.28:8000%@", [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+        [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data] waitUntilDone:YES];
+    });
+    
+    [self.navigationController pushViewController:movieController animated:YES];
+    movieController.navigationItem.title = [track objectForKey:@"name"];
+}
+
+- (void)setArtwork:(UIImage *)image {
+    UIImageView *artView = [[UIImageView alloc] initWithImage:image];
+    artView.frame = movieController.moviePlayer.backgroundView.frame;
+    [movieController.moviePlayer.backgroundView addSubview:artView];
 }
 
 @end
