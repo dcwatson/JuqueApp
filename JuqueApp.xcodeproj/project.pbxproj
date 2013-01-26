@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E514FAFE16AC81C5002F735D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E514FAFD16AC81C5002F735D /* UIKit.framework */; };
+		E514FB0016AC81C5002F735D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E514FAFF16AC81C5002F735D /* Foundation.framework */; };
+		E514FB0216AC81C5002F735D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E514FB0116AC81C5002F735D /* CoreGraphics.framework */; };
+		E514FB0816AC81C5002F735D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E514FB0616AC81C5002F735D /* InfoPlist.strings */; };
+		E514FB0A16AC81C5002F735D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB0916AC81C5002F735D /* main.m */; };
+		E514FB0E16AC81C5002F735D /* JQAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB0D16AC81C5002F735D /* JQAppDelegate.m */; };
+		E514FB1016AC81C5002F735D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E514FB0F16AC81C5002F735D /* Default.png */; };
+		E514FB1216AC81C5002F735D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1116AC81C5002F735D /* Default@2x.png */; };
+		E514FB1416AC81C5002F735D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1316AC81C5002F735D /* Default-568h@2x.png */; };
+		E514FB1716AC81C5002F735D /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1516AC81C5002F735D /* MainStoryboard_iPhone.storyboard */; };
+		E514FB1A16AC81C5002F735D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1816AC81C5002F735D /* MainStoryboard_iPad.storyboard */; };
+		E514FB1D16AC81C5002F735D /* JQArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB1C16AC81C5002F735D /* JQArtistViewController.m */; };
+		E514FB2416AC81C5002F735D /* JQSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB2316AC81C5002F735D /* JQSecondViewController.m */; };
+		E5FD5C8716B3051C00BCE7A9 /* JQProxyURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5C8616B3051C00BCE7A9 /* JQProxyURLProtocol.m */; };
+		E5FD5C8B16B30E4C00BCE7A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */; };
+		E5FD5C8E16B33E1100BCE7A9 /* JQTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5C8D16B33E1100BCE7A9 /* JQTrackViewController.m */; };
+		E5FD5C9016B365BD00BCE7A9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FD5C8F16B365BD00BCE7A9 /* MediaPlayer.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E514FAF916AC81C5002F735D /* JuqueApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuqueApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E514FAFD16AC81C5002F735D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E514FAFF16AC81C5002F735D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E514FB0116AC81C5002F735D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E514FB0516AC81C5002F735D /* JuqueApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JuqueApp-Info.plist"; sourceTree = "<group>"; };
+		E514FB0716AC81C5002F735D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E514FB0916AC81C5002F735D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E514FB0B16AC81C5002F735D /* JuqueApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JuqueApp-Prefix.pch"; sourceTree = "<group>"; };
+		E514FB0C16AC81C5002F735D /* JQAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQAppDelegate.h; sourceTree = "<group>"; };
+		E514FB0D16AC81C5002F735D /* JQAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQAppDelegate.m; sourceTree = "<group>"; };
+		E514FB0F16AC81C5002F735D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E514FB1116AC81C5002F735D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E514FB1316AC81C5002F735D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E514FB1616AC81C5002F735D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		E514FB1916AC81C5002F735D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		E514FB1B16AC81C5002F735D /* JQArtistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQArtistViewController.h; sourceTree = "<group>"; };
+		E514FB1C16AC81C5002F735D /* JQArtistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQArtistViewController.m; sourceTree = "<group>"; };
+		E514FB2216AC81C5002F735D /* JQSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQSecondViewController.h; sourceTree = "<group>"; };
+		E514FB2316AC81C5002F735D /* JQSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQSecondViewController.m; sourceTree = "<group>"; };
+		E5FD5C8516B3051C00BCE7A9 /* JQProxyURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQProxyURLProtocol.h; sourceTree = "<group>"; };
+		E5FD5C8616B3051C00BCE7A9 /* JQProxyURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQProxyURLProtocol.m; sourceTree = "<group>"; };
+		E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E5FD5C8C16B33E1100BCE7A9 /* JQTrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQTrackViewController.h; sourceTree = "<group>"; };
+		E5FD5C8D16B33E1100BCE7A9 /* JQTrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQTrackViewController.m; sourceTree = "<group>"; };
+		E5FD5C8F16B365BD00BCE7A9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E514FAF616AC81C5002F735D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5FD5C9016B365BD00BCE7A9 /* MediaPlayer.framework in Frameworks */,
+				E5FD5C8B16B30E4C00BCE7A9 /* AVFoundation.framework in Frameworks */,
+				E514FAFE16AC81C5002F735D /* UIKit.framework in Frameworks */,
+				E514FB0016AC81C5002F735D /* Foundation.framework in Frameworks */,
+				E514FB0216AC81C5002F735D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E514FAEE16AC81C5002F735D = {
+			isa = PBXGroup;
+			children = (
+				E5FD5C8F16B365BD00BCE7A9 /* MediaPlayer.framework */,
+				E514FB0316AC81C5002F735D /* JuqueApp */,
+				E514FAFC16AC81C5002F735D /* Frameworks */,
+				E514FAFA16AC81C5002F735D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E514FAFA16AC81C5002F735D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E514FAF916AC81C5002F735D /* JuqueApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E514FAFC16AC81C5002F735D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */,
+				E514FAFD16AC81C5002F735D /* UIKit.framework */,
+				E514FAFF16AC81C5002F735D /* Foundation.framework */,
+				E514FB0116AC81C5002F735D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E514FB0316AC81C5002F735D /* JuqueApp */ = {
+			isa = PBXGroup;
+			children = (
+				E514FB0C16AC81C5002F735D /* JQAppDelegate.h */,
+				E514FB0D16AC81C5002F735D /* JQAppDelegate.m */,
+				E514FB1516AC81C5002F735D /* MainStoryboard_iPhone.storyboard */,
+				E514FB1816AC81C5002F735D /* MainStoryboard_iPad.storyboard */,
+				E514FB1B16AC81C5002F735D /* JQArtistViewController.h */,
+				E514FB1C16AC81C5002F735D /* JQArtistViewController.m */,
+				E5FD5C8C16B33E1100BCE7A9 /* JQTrackViewController.h */,
+				E5FD5C8D16B33E1100BCE7A9 /* JQTrackViewController.m */,
+				E514FB2216AC81C5002F735D /* JQSecondViewController.h */,
+				E514FB2316AC81C5002F735D /* JQSecondViewController.m */,
+				E5FD5C8516B3051C00BCE7A9 /* JQProxyURLProtocol.h */,
+				E5FD5C8616B3051C00BCE7A9 /* JQProxyURLProtocol.m */,
+				E514FB0416AC81C5002F735D /* Supporting Files */,
+			);
+			path = JuqueApp;
+			sourceTree = "<group>";
+		};
+		E514FB0416AC81C5002F735D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E514FB0516AC81C5002F735D /* JuqueApp-Info.plist */,
+				E514FB0616AC81C5002F735D /* InfoPlist.strings */,
+				E514FB0916AC81C5002F735D /* main.m */,
+				E514FB0B16AC81C5002F735D /* JuqueApp-Prefix.pch */,
+				E514FB0F16AC81C5002F735D /* Default.png */,
+				E514FB1116AC81C5002F735D /* Default@2x.png */,
+				E514FB1316AC81C5002F735D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E514FAF816AC81C5002F735D /* JuqueApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E514FB2B16AC81C5002F735D /* Build configuration list for PBXNativeTarget "JuqueApp" */;
+			buildPhases = (
+				E514FAF516AC81C5002F735D /* Sources */,
+				E514FAF616AC81C5002F735D /* Frameworks */,
+				E514FAF716AC81C5002F735D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JuqueApp;
+			productName = JuqueApp;
+			productReference = E514FAF916AC81C5002F735D /* JuqueApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E514FAF016AC81C5002F735D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JQ;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Daniel Watson";
+			};
+			buildConfigurationList = E514FAF316AC81C5002F735D /* Build configuration list for PBXProject "JuqueApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E514FAEE16AC81C5002F735D;
+			productRefGroup = E514FAFA16AC81C5002F735D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E514FAF816AC81C5002F735D /* JuqueApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E514FAF716AC81C5002F735D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E514FB0816AC81C5002F735D /* InfoPlist.strings in Resources */,
+				E514FB1016AC81C5002F735D /* Default.png in Resources */,
+				E514FB1216AC81C5002F735D /* Default@2x.png in Resources */,
+				E514FB1416AC81C5002F735D /* Default-568h@2x.png in Resources */,
+				E514FB1716AC81C5002F735D /* MainStoryboard_iPhone.storyboard in Resources */,
+				E514FB1A16AC81C5002F735D /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E514FAF516AC81C5002F735D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E514FB0A16AC81C5002F735D /* main.m in Sources */,
+				E514FB0E16AC81C5002F735D /* JQAppDelegate.m in Sources */,
+				E514FB1D16AC81C5002F735D /* JQArtistViewController.m in Sources */,
+				E514FB2416AC81C5002F735D /* JQSecondViewController.m in Sources */,
+				E5FD5C8716B3051C00BCE7A9 /* JQProxyURLProtocol.m in Sources */,
+				E5FD5C8E16B33E1100BCE7A9 /* JQTrackViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E514FB0616AC81C5002F735D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E514FB0716AC81C5002F735D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E514FB1516AC81C5002F735D /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E514FB1616AC81C5002F735D /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		E514FB1816AC81C5002F735D /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E514FB1916AC81C5002F735D /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E514FB2916AC81C5002F735D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E514FB2A16AC81C5002F735D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E514FB2C16AC81C5002F735D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JuqueApp/JuqueApp-Prefix.pch";
+				INFOPLIST_FILE = "JuqueApp/JuqueApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E514FB2D16AC81C5002F735D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JuqueApp/JuqueApp-Prefix.pch";
+				INFOPLIST_FILE = "JuqueApp/JuqueApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E514FAF316AC81C5002F735D /* Build configuration list for PBXProject "JuqueApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E514FB2916AC81C5002F735D /* Debug */,
+				E514FB2A16AC81C5002F735D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E514FB2B16AC81C5002F735D /* Build configuration list for PBXNativeTarget "JuqueApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E514FB2C16AC81C5002F735D /* Debug */,
+				E514FB2D16AC81C5002F735D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E514FAF016AC81C5002F735D /* Project object */;
+}
