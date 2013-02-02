@@ -7,6 +7,7 @@
 //
 
 #import "JQTrackViewController.h"
+#import "JQMediaCacheProtocol.h"
 
 @interface JQTrackViewController ()
 
@@ -39,7 +40,7 @@
 - (void)setArtist:(NSDictionary *)artistInfo {
     self.navigationItem.title = [artistInfo objectForKey:@"name"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"http://localhost:8000/api/v1/track/?format=json&artist__id=%@", [artistInfo objectForKey:@"id"]];
+        NSString *urlString = [NSString stringWithFormat:@"%@/api/v1/track/?format=json&artist__id=%@", JUQUE_SERVER, [artistInfo objectForKey:@"id"]];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         NSError *error;
         NSDictionary *info = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -65,6 +66,16 @@
     UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:@"TrackCell"];
     NSDictionary *track = [trackList objectAtIndex:indexPath.row];
     cell.textLabel.text = [track objectForKey:@"name"];
+    
+    // Indicate if the track is cached locally.
+    NSString *urlString = [track objectForKey:@"url"];
+    if(![urlString hasPrefix:@"http"]) {
+        urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
+    }
+    if([JQMediaCacheProtocol isCached:[NSURL URLWithString:urlString]]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
     return cell;
 }
 
@@ -74,7 +85,7 @@
     NSDictionary *track = [trackList objectAtIndex:indexPath.row];
     NSString *urlString = [track objectForKey:@"url"];
     if(![urlString hasPrefix:@"http"]) {
-        urlString = [NSString stringWithFormat:@"http://localhost:8000%@", urlString];
+        urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
     }
     NSLog(@"playing %@", urlString);
     
@@ -83,7 +94,7 @@
     movieController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"http://localhost:8000%@", [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
+        NSString *urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data] waitUntilDone:YES];
     });

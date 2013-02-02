@@ -13,4 +13,6 @@
     NSString *cachePath;
 }
 
++ (BOOL)isCached:(NSURL *)url;
+
 @end

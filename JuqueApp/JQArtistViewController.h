@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface JQArtistViewController : UITableViewController <UITableViewDataSource> {
-    NSArray *artistData;
+    NSMutableArray *artistData, *sections;
 }
 
 @end

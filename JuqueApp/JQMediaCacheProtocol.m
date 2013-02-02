@@ -47,8 +47,14 @@
 
 @implementation JQMediaCacheProtocol
 
-+ (NSURL *)cacheURLForRequest:(NSURLRequest *)request {
-    NSString *requestString = [[[[request URL] absoluteString] componentsSeparatedByString:@"?"] objectAtIndex:0];
++ (BOOL)isCached:(NSURL *)url {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *path = [[JQMediaCacheProtocol cacheURLForRequestURL:url] path];
+    return [fm fileExistsAtPath:path];
+}
+
++ (NSURL *)cacheURLForRequestURL:(NSURL *)url {
+    NSString *requestString = [[[url absoluteString] componentsSeparatedByString:@"?"] objectAtIndex:0];
     NSFileManager *fm = [NSFileManager defaultManager];
     NSURL *cacheURL = [[fm URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] objectAtIndex:0];
     NSString *filename = [NSString stringWithFormat:@"%@.%@", [requestString md5], [requestString pathExtension]];
@@ -77,13 +83,12 @@
 
 - (void)startLoading {
     NSFileManager *fm = [NSFileManager defaultManager];
-    cachePath = [[JQMediaCacheProtocol cacheURLForRequest:[self request]] path];
+    cachePath = [[JQMediaCacheProtocol cacheURLForRequestURL:[[self request] URL]] path];
     NSLog(@"REQUEST cachePath = %@, headers = %@", cachePath, [[self request] allHTTPHeaderFields]);
     
     if([fm fileExistsAtPath:cachePath]) {
         // TODO: this in inefficient, should read only what we need
         NSData *data = [fm contentsAtPath:cachePath];
-        
         NSMutableDictionary *headers = [NSMutableDictionary dictionaryWithDictionary:@{
                                         @"Server": @"Juque/1.0",
                                         @"Date": [[NSDate date] httpString],

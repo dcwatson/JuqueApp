@@ -12,3 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifndef JUQUE_SERVER
+#define JUQUE_SERVER @"http://localhost:8000"
+#endif
