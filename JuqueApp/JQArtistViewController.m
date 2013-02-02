@@ -19,7 +19,7 @@
     artistData = [NSArray array];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://192.168.1.28:8000/api/v1/artist/?format=json&limit=0"]];
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8000/api/v1/artist/?format=json&limit=0"]];
         NSError *error;
         NSDictionary *info = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         if(error == nil) {

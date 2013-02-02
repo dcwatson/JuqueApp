@@ -39,7 +39,7 @@
 - (void)setArtist:(NSDictionary *)artistInfo {
     self.navigationItem.title = [artistInfo objectForKey:@"name"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.28:8000/api/v1/track/?format=json&artist__id=%@", [artistInfo objectForKey:@"id"]];
+        NSString *urlString = [NSString stringWithFormat:@"http://localhost:8000/api/v1/track/?format=json&artist__id=%@", [artistInfo objectForKey:@"id"]];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         NSError *error;
         NSDictionary *info = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -72,8 +72,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *track = [trackList objectAtIndex:indexPath.row];
-    NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.28:8000%@", [track objectForKey:@"url"]];
-    
+    NSString *urlString = [track objectForKey:@"url"];
+    if(![urlString hasPrefix:@"http"]) {
+        urlString = [NSString stringWithFormat:@"http://localhost:8000%@", urlString];
+    }
     NSLog(@"playing %@", urlString);
     
     movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:urlString]];
@@ -81,7 +83,7 @@
     movieController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.28:8000%@", [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
+        NSString *urlString = [NSString stringWithFormat:@"http://localhost:8000%@", [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data] waitUntilDone:YES];
     });

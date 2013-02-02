@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JQProxyURLProtocol : NSURLProtocol <NSURLConnectionDelegate> {
-    NSURL *cacheURL;
+@interface JQMediaCacheProtocol : NSURLProtocol {
+    NSMutableData *downloadData;
+    NSString *cachePath;
 }
 
 @end
