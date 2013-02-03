@@ -14,5 +14,6 @@
 }
 
 + (BOOL)isCached:(NSURL *)url;
++ (NSURL *)cacheURLForRequestURL:(NSURL *)url;
 
 @end

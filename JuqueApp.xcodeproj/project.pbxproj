@@ -73,7 +73,6 @@
 		E514FAEE16AC81C5002F735D = {
 			isa = PBXGroup;
 			children = (
-				E5FD5C8F16B365BD00BCE7A9 /* MediaPlayer.framework */,
 				E514FB0316AC81C5002F735D /* JuqueApp */,
 				E514FAFC16AC81C5002F735D /* Frameworks */,
 				E514FAFA16AC81C5002F735D /* Products */,
@@ -91,6 +90,7 @@
 		E514FAFC16AC81C5002F735D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5FD5C8F16B365BD00BCE7A9 /* MediaPlayer.framework */,
 				E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */,
 				E514FAFD16AC81C5002F735D /* UIKit.framework */,
 				E514FAFF16AC81C5002F735D /* Foundation.framework */,

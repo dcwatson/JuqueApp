@@ -12,7 +12,10 @@
 @implementation JQAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NSURLProtocol registerClass:[JQMediaCacheProtocol class]];
+    // Welp, all that coding for nothing. It seems MPMoviePlayerController (and AVPlayer) respect registered NSURLProtocol subclasses
+    // on the Mac/Simulator, but not on actual iOS devices. Maybe some day it will, and I can uncomment this line and have a better caching system.
+    
+    //[NSURLProtocol registerClass:[JQMediaCacheProtocol class]];
     return YES;
 }
 

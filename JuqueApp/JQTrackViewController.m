@@ -16,9 +16,7 @@
 @implementation JQTrackViewController
 
 - (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if(self = [super initWithStyle:style]) {
     }
     return self;
 }
@@ -51,9 +49,36 @@
     });
 }
 
+- (void)setArtwork:(UIImage *)image {
+    UIImageView *artView = [[UIImageView alloc] initWithImage:image];
+    artView.frame = movieController.moviePlayer.backgroundView.frame;
+    [movieController.moviePlayer.backgroundView addSubview:artView];
+}
+
 - (void)gotTracks:(NSArray *)tracks {
     trackList = tracks;
     [self.tableView reloadData];
+}
+
+- (void)pushController:(NSDictionary *)track {
+    NSString *urlString = [track objectForKey:@"url"];
+    if(![urlString hasPrefix:@"http"]) {
+        urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
+    }
+    NSURL *cacheURL = [JQMediaCacheProtocol cacheURLForRequestURL:[NSURL URLWithString:urlString]];
+
+    movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:cacheURL];
+    movieController.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
+    movieController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        NSString *urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+        [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data] waitUntilDone:YES];
+    });
+
+    [self.navigationController pushViewController:movieController animated:YES];
+    movieController.navigationItem.title = [track objectForKey:@"name"];
 }
 
 #pragma mark - Table view data source
@@ -83,30 +108,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *track = [trackList objectAtIndex:indexPath.row];
+    
     NSString *urlString = [track objectForKey:@"url"];
     if(![urlString hasPrefix:@"http"]) {
         urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
     }
-    NSLog(@"playing %@", urlString);
+    NSURL *trackURL = [NSURL URLWithString:urlString];
+    NSURL *cacheURL = [JQMediaCacheProtocol cacheURLForRequestURL:trackURL];
     
-    movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:urlString]];
-    movieController.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
-    movieController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-        [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data] waitUntilDone:YES];
-    });
-    
-    [self.navigationController pushViewController:movieController animated:YES];
-    movieController.navigationItem.title = [track objectForKey:@"name"];
+    if([JQMediaCacheProtocol isCached:trackURL]) {
+        [self pushController:track];
+    }
+    else {
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.accessoryView = spinner;
+        [spinner startAnimating];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            NSData *data = [NSData dataWithContentsOfURL:trackURL];
+            NSFileManager *fm = [NSFileManager defaultManager];
+            [fm createFileAtPath:[cacheURL path] contents:data attributes:nil];
+            [self performSelectorOnMainThread:@selector(markCached:) withObject:cell waitUntilDone:YES];
+            [self performSelectorOnMainThread:@selector(pushController:) withObject:track waitUntilDone:YES];
+        });
+    }
 }
 
-- (void)setArtwork:(UIImage *)image {
-    UIImageView *artView = [[UIImageView alloc] initWithImage:image];
-    artView.frame = movieController.moviePlayer.backgroundView.frame;
-    [movieController.moviePlayer.backgroundView addSubview:artView];
+- (void)markCached:(UITableViewCell *)cell {
+    cell.accessoryView = nil;
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
 @end
