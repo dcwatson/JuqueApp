@@ -9,7 +9,35 @@
 #import "JQTrackViewController.h"
 #import "JQMediaCacheProtocol.h"
 
-@interface JQTrackViewController ()
+@interface TrackInfo : NSObject
+
+@property NSDictionary *info;
+
+- (id)initWithDictionary:(NSDictionary *)dict;
+- (NSString *)album;
+- (NSInteger)number;
+
+@end
+
+@implementation TrackInfo
+
+@synthesize info;
+
+- (id)initWithDictionary:(NSDictionary *)dict {
+    if(self = [super init]) {
+        self.info = dict;
+    }
+    return self;
+}
+
+- (NSString *)album {
+    id albumInfo = [self.info objectForKey:@"album"];
+    return [albumInfo isKindOfClass:[NSNull class]] ? @"No Album" : [albumInfo objectForKey:@"name"];
+}
+
+- (NSInteger)number {
+    return [[self.info objectForKey:@"track_number"] integerValue];
+}
 
 @end
 
@@ -38,7 +66,7 @@
 - (void)setArtist:(NSDictionary *)artistInfo {
     self.navigationItem.title = [artistInfo objectForKey:@"name"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"%@/api/v1/track/?format=json&artist__id=%@", JUQUE_SERVER, [artistInfo objectForKey:@"id"]];
+        NSString *urlString = [NSString stringWithFormat:@"%@/api/v1/track/?format=json&artist__id=%@&limit=0", JUQUE_SERVER, [artistInfo objectForKey:@"id"]];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
         NSError *error;
         NSDictionary *info = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
@@ -57,8 +85,27 @@
     [movieController.moviePlayer.backgroundView addSubview:artView];
 }
 
+- (void)_buildSections:(NSArray *)objects {
+    sections = [NSMutableDictionary dictionary];
+    for(TrackInfo *track in objects) {
+        NSMutableArray *arr = [sections objectForKey:[track album]];
+        if(arr == nil) {
+            arr = [NSMutableArray arrayWithObject:track];
+            [sections setObject:arr forKey:[track album]];
+        }
+        else {
+            [arr addObject:track];
+        }
+    }
+    sectionNames = [[sections allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+}
+
 - (void)gotTracks:(NSArray *)tracks {
-    trackList = tracks;
+    NSMutableArray *trackObjects = [NSMutableArray array];
+    for(NSDictionary *info in tracks) {
+        [trackObjects addObject:[[TrackInfo alloc] initWithDictionary:info]];
+    }
+    [self _buildSections:trackObjects];
     [self.tableView reloadData];
 }
 
@@ -73,29 +120,41 @@
     movieController.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
     movieController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        NSString *urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-        [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data scale:2.0] waitUntilDone:YES];
-    });
-
+    id albumInfo = [track objectForKey:@"album"];
+    if(![albumInfo isKindOfClass:[NSNull class]]) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            NSString *urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, [albumInfo objectForKey:@"artwork_url"]];
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
+            [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data scale:2.0] waitUntilDone:YES];
+        });
+    }
     [self.navigationController pushViewController:movieController animated:YES];
     movieController.navigationItem.title = [track objectForKey:@"name"];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section {
-    return [trackList count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)table {
+    return [sectionNames count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSString *album = [sectionNames objectAtIndex:section];
+    return [[sections objectForKey:album] count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [sectionNames objectAtIndex:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:@"TrackCell"];
-    NSDictionary *track = [trackList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [track objectForKey:@"name"];
+    NSString *album = [sectionNames objectAtIndex:indexPath.section];
+    TrackInfo *track = [[sections objectForKey:album] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [track.info objectForKey:@"name"];
     
     // Indicate if the track is cached locally.
-    NSString *urlString = [track objectForKey:@"url"];
+    NSString *urlString = [track.info objectForKey:@"url"];
     if(![urlString hasPrefix:@"http"]) {
         urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
     }
@@ -109,9 +168,10 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *track = [trackList objectAtIndex:indexPath.row];
+    NSString *album = [sectionNames objectAtIndex:indexPath.section];
+    TrackInfo *track = [[sections objectForKey:album] objectAtIndex:indexPath.row];
     
-    NSString *urlString = [track objectForKey:@"url"];
+    NSString *urlString = [track.info objectForKey:@"url"];
     if(![urlString hasPrefix:@"http"]) {
         urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
     }
@@ -119,7 +179,7 @@
     NSURL *cacheURL = [JQMediaCacheProtocol cacheURLForRequestURL:trackURL];
     
     if([JQMediaCacheProtocol isCached:trackURL]) {
-        [self pushController:track];
+        [self pushController:track.info];
     }
     else {
         UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -132,7 +192,7 @@
             NSFileManager *fm = [NSFileManager defaultManager];
             [fm createFileAtPath:[cacheURL path] contents:data attributes:nil];
             [self performSelectorOnMainThread:@selector(markCached:) withObject:cell waitUntilDone:YES];
-            [self performSelectorOnMainThread:@selector(pushController:) withObject:track waitUntilDone:YES];
+            [self performSelectorOnMainThread:@selector(pushController:) withObject:track.info waitUntilDone:YES];
         });
     }
 }

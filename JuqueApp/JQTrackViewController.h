@@ -10,7 +10,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface JQTrackViewController : UITableViewController {
-    NSArray *trackList;
+    NSArray *sectionNames;
+    NSMutableDictionary *sections;
     MPMoviePlayerViewController *movieController;
 }
 
