@@ -51,7 +51,9 @@
 
 - (void)setArtwork:(UIImage *)image {
     UIImageView *artView = [[UIImageView alloc] initWithImage:image];
-    artView.frame = movieController.moviePlayer.backgroundView.frame;
+    CGRect frame = movieController.moviePlayer.backgroundView.frame;
+    artView.frame = CGRectMake(frame.origin.x, frame.origin.y, 320.0, 320.0);
+    movieController.moviePlayer.backgroundView.backgroundColor = [UIColor blackColor];
     [movieController.moviePlayer.backgroundView addSubview:artView];
 }
 
@@ -74,7 +76,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         NSString *urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, [[track objectForKey:@"album"] objectForKey:@"artwork_url"]];
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]];
-        [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data] waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(setArtwork:) withObject:[UIImage imageWithData:data scale:2.0] waitUntilDone:YES];
     });
 
     [self.navigationController pushViewController:movieController animated:YES];
