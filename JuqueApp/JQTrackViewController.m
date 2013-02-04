@@ -52,6 +52,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    cloudAccessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cloud.png"]];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -159,7 +161,11 @@
         urlString = [NSString stringWithFormat:@"%@%@", JUQUE_SERVER, urlString];
     }
     if([JQMediaCacheProtocol isCached:[NSURL URLWithString:urlString]]) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.accessoryView = cloudAccessoryView;
+    }
+    else {
+        cell.accessoryView = nil;
     }
     
     return cell;
@@ -198,8 +204,7 @@
 }
 
 - (void)markCached:(UITableViewCell *)cell {
-    cell.accessoryView = nil;
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    cell.accessoryView = cloudAccessoryView;
 }
 
 @end

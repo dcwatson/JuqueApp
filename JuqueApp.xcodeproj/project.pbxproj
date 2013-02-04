@@ -20,6 +20,12 @@
 		E514FB1A16AC81C5002F735D /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E514FB1816AC81C5002F735D /* MainStoryboard_iPad.storyboard */; };
 		E514FB1D16AC81C5002F735D /* JQArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E514FB1C16AC81C5002F735D /* JQArtistViewController.m */; };
 		E55A052F16BD86E30079ED5F /* JQMediaDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E55A052E16BD86E30079ED5F /* JQMediaDownloader.m */; };
+		E59EE71416C03BB200CEE55B /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = E59EE71316C03BB200CEE55B /* cloud.png */; };
+		E59EE71616C03E8700CEE55B /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E59EE71516C03E8700CEE55B /* cloud@2x.png */; };
+		E59EE71816C040DE00CEE55B /* playlist.png in Resources */ = {isa = PBXBuildFile; fileRef = E59EE71716C040DE00CEE55B /* playlist.png */; };
+		E59EE71A16C0415100CEE55B /* playlist@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E59EE71916C0415100CEE55B /* playlist@2x.png */; };
+		E59EE71D16C0427B00CEE55B /* artists.png in Resources */ = {isa = PBXBuildFile; fileRef = E59EE71B16C0427B00CEE55B /* artists.png */; };
+		E59EE71E16C0427B00CEE55B /* artists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E59EE71C16C0427B00CEE55B /* artists@2x.png */; };
 		E5FD5C8716B3051C00BCE7A9 /* JQMediaCacheProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5C8616B3051C00BCE7A9 /* JQMediaCacheProtocol.m */; };
 		E5FD5C8B16B30E4C00BCE7A9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */; };
 		E5FD5C8E16B33E1100BCE7A9 /* JQTrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FD5C8D16B33E1100BCE7A9 /* JQTrackViewController.m */; };
@@ -46,6 +52,12 @@
 		E514FB1C16AC81C5002F735D /* JQArtistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQArtistViewController.m; sourceTree = "<group>"; };
 		E55A052D16BD86E30079ED5F /* JQMediaDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQMediaDownloader.h; sourceTree = "<group>"; };
 		E55A052E16BD86E30079ED5F /* JQMediaDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQMediaDownloader.m; sourceTree = "<group>"; };
+		E59EE71316C03BB200CEE55B /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
+		E59EE71516C03E8700CEE55B /* cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@2x.png"; sourceTree = "<group>"; };
+		E59EE71716C040DE00CEE55B /* playlist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playlist.png; sourceTree = "<group>"; };
+		E59EE71916C0415100CEE55B /* playlist@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playlist@2x.png"; sourceTree = "<group>"; };
+		E59EE71B16C0427B00CEE55B /* artists.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = artists.png; sourceTree = "<group>"; };
+		E59EE71C16C0427B00CEE55B /* artists@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "artists@2x.png"; sourceTree = "<group>"; };
 		E5FD5C8516B3051C00BCE7A9 /* JQMediaCacheProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQMediaCacheProtocol.h; sourceTree = "<group>"; };
 		E5FD5C8616B3051C00BCE7A9 /* JQMediaCacheProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQMediaCacheProtocol.m; sourceTree = "<group>"; };
 		E5FD5C8A16B30E4C00BCE7A9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +126,7 @@
 				E5FD5C8616B3051C00BCE7A9 /* JQMediaCacheProtocol.m */,
 				E55A052D16BD86E30079ED5F /* JQMediaDownloader.h */,
 				E55A052E16BD86E30079ED5F /* JQMediaDownloader.m */,
+				E59EE71216C03B9C00CEE55B /* Resources */,
 				E514FB0416AC81C5002F735D /* Supporting Files */,
 			);
 			path = JuqueApp;
@@ -131,6 +144,19 @@
 				E514FB1316AC81C5002F735D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E59EE71216C03B9C00CEE55B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E59EE71316C03BB200CEE55B /* cloud.png */,
+				E59EE71516C03E8700CEE55B /* cloud@2x.png */,
+				E59EE71716C040DE00CEE55B /* playlist.png */,
+				E59EE71916C0415100CEE55B /* playlist@2x.png */,
+				E59EE71B16C0427B00CEE55B /* artists.png */,
+				E59EE71C16C0427B00CEE55B /* artists@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +217,12 @@
 				E514FB1416AC81C5002F735D /* Default-568h@2x.png in Resources */,
 				E514FB1716AC81C5002F735D /* MainStoryboard_iPhone.storyboard in Resources */,
 				E514FB1A16AC81C5002F735D /* MainStoryboard_iPad.storyboard in Resources */,
+				E59EE71416C03BB200CEE55B /* cloud.png in Resources */,
+				E59EE71616C03E8700CEE55B /* cloud@2x.png in Resources */,
+				E59EE71816C040DE00CEE55B /* playlist.png in Resources */,
+				E59EE71A16C0415100CEE55B /* playlist@2x.png in Resources */,
+				E59EE71D16C0427B00CEE55B /* artists.png in Resources */,
+				E59EE71E16C0427B00CEE55B /* artists@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

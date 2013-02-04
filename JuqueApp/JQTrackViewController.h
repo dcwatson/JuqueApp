@@ -13,6 +13,7 @@
     NSArray *sectionNames;
     NSMutableDictionary *sections;
     MPMoviePlayerViewController *movieController;
+    UIImageView *cloudAccessoryView;
 }
 
 - (void)setArtist:(NSDictionary *)artistInfo;

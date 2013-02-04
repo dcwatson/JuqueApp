@@ -91,7 +91,7 @@
                             <outlet property="delegate" destination="vYw-0c-jqr" id="80t-OO-QrU"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Playlists" id="mW5-Uo-8NQ"/>
+                    <tabBarItem key="tabBarItem" title="Playlists" image="playlist.png" id="mW5-Uo-8NQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txi-QU-FIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +101,7 @@
         <scene sceneID="nVa-fl-Gum">
             <objects>
                 <navigationController definesPresentationContext="YES" id="ZLP-hV-tnb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Artists" id="c1W-xL-wI0"/>
+                    <tabBarItem key="tabBarItem" title="Artists" image="artists.png" id="c1W-xL-wI0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9nF-92-3m6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -137,6 +137,10 @@
             <point key="canvasLocation" x="-1065" y="-1360"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="artists.png" width="21" height="20"/>
+        <image name="playlist.png" width="25" height="20"/>
+    </resources>
     <classes>
         <class className="JQArtistViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/JQArtistViewController.h"/>
